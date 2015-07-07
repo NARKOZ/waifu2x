@@ -1,0 +1,59 @@
+#!/usr/bin/env ruby
+
+require 'waifu2x'
+require 'optparse'
+
+options = {}
+
+optparse = OptionParser.new do |opts|
+  opts.banner = 'Usage: waifu2x image <filename>'
+  opts.separator ''
+  opts.separator 'Options:'
+
+  opts.on_tail('-n', '--noise NOISE', 'Noise reduction (0 - none, 1 - low, 2 - high), default: 2') do |noise|
+    options[:noise] = noise.to_i
+  end
+
+  opts.on_tail('-s', '--scale SCALE', 'Upscaling (0 - none, 1 - 1.6x, 2 - 2x), default: 0') do |scale|
+    options[:scale] = scale.to_i
+  end
+
+  opts.on_tail('-h', '--help', 'Prints this help message') do
+    puts opts
+    exit
+  end
+
+  opts.on_tail('-v', '--version', 'Prints version') do
+    puts "Waifu2x Version #{Waifu2x::VERSION}"
+    exit
+  end
+end
+
+begin
+  optparse.parse!
+rescue OptionParser::ParseError
+  puts optparse
+  exit 1
+end
+
+if ARGV.empty?
+  puts optparse
+  exit 1
+end
+
+image = ARGV[0]
+filename = ARGV[1]
+start_time = Time.now.to_i
+
+puts 'Processing...'
+
+begin
+  waifu2x = Waifu2x.convert(image, filename, options)
+rescue Waifu2x::Error => e
+  abort e.message
+end
+
+finish_time = Time.now.to_i
+duration = finish_time - start_time
+
+puts "Upload took ~#{duration} seconds. Created file #{waifu2x}"
