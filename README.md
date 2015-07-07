@@ -1,7 +1,8 @@
 # Waifu2x [![Build Status](https://travis-ci.org/NARKOZ/waifu2x.svg)](https://travis-ci.org/NARKOZ/waifu2x)
 
-Ruby wrapper and CLI for waifu2x.  
-Noise Reduction and 2x Upscaling for anime style images.
+Waifu2x is a ruby wrapper and CLI for
+[waifu2x](https://github.com/nagadomi/waifu2x), which provides Noise Reduction
+and 2x Upscaling for anime style images.
 
 ## Installation
 
