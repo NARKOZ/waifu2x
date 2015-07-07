@@ -1,4 +1,4 @@
-# Waifu2x
+# Waifu2x [![Build Status](https://travis-ci.org/NARKOZ/waifu2x.svg)](https://travis-ci.org/NARKOZ/waifu2x)
 
 Ruby wrapper and CLI for waifu2x.  
 Noise Reduction and 2x Upscaling for anime style images.
@@ -26,14 +26,20 @@ bundle install
 ## Usage
 
 ```ruby
+# convert image.png with 2x upscaling
 Waifu2x.convert('image.png', nil, { scale: 2 })
+
+# convert image.png to converted.png without noise reduction and with 2x upscaling
 Waifu2x.convert('image.png', 'converted.png', { noise: 0, scale: 2 })
 ```
 
 ## CLI usage
 
 ```sh
+# convert sample.jpg with 2x upscaling
 waifu2x sample.jpg -s 2
+
+# convert sample.jpg to output.jpg without noise reduction and with 2x upscaling
 waifu2x sample.jpg output.jpg -n 0 -s 2
 ```
 
