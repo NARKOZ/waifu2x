@@ -39,11 +39,10 @@ module Waifu2x
     raise InvalidImage, response.body if response.body.include?('ERROR')
     raise Waifu2x::ServerError, "Request to Waifu2x API failed with response code: #{response.code}" if response.code != 200
 
-    output_file = output_filename(file) if output_file.to_s.strip.empty?
-
     if options[:raw]
       response.body
     else
+      output_file = output_filename(source) if output_file.to_s.strip.empty?
       File.write(output_file, response.body)
       output_file
     end
