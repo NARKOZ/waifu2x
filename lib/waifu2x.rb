@@ -21,7 +21,7 @@ module Waifu2x
 
     validate_options! noise, scale
 
-    if source.start_with?('http', 'ftp')
+    if source.is_a?(String) && source.start_with?('http', 'ftp')
       source_params = { url: source }
     else
       begin
