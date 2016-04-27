@@ -33,7 +33,7 @@ module Waifu2x
 
     response = Typhoeus.post(API_ENDPOINT,
       headers: { 'User-Agent' => USER_AGENT },
-      body: { noise: noise, scale: scale }.merge(source_params)
+      body: { noise: noise.to_s, scale: scale.to_s }.merge(source_params)
     )
 
     raise InvalidImage, response.body if response.body.include?('ERROR')
