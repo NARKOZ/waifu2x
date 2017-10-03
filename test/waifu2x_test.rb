@@ -11,11 +11,11 @@ class Waifu2xTest < Minitest::Test
 
   def test_valid_options
     assert_raises Waifu2x::InvalidArgument do
-      Waifu2x.convert('file.jpg', nil, { noise: 7 })
+      Waifu2x.convert('http://example.com/file.jpg', nil, noise: 7)
     end
 
     assert_raises Waifu2x::InvalidArgument do
-      Waifu2x.convert('file.jpg', nil, { scale: 7 })
+      Waifu2x.convert('http://example.com/file.jpg', nil, scale: 7)
     end
   end
 
