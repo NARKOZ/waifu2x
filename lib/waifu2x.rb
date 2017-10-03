@@ -73,7 +73,9 @@ module Waifu2x
               end
     response = request.run
 
-    if response.body.include?('File not found') || response.body.include?('Image file is not of type')
+    if response.body.include?('File not found') ||
+       response.body.include?('Image file is not of type') ||
+       response.body.include?('Image file is too large')
       raise InvalidImage, response.body
     end
 
