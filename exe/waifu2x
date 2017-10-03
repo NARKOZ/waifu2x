@@ -10,12 +10,16 @@ optparse = OptionParser.new do |opts|
   opts.separator ''
   opts.separator 'Options:'
 
-  opts.on_tail('-n', '--noise NOISE', 'Noise reduction (0 - none, 1 - low, 2 - high), default: 2') do |noise|
+  opts.on_tail('-n', '--noise NOISE', 'Noise reduction (0 - none, 1 - medium, 2 - high), default: 1') do |noise|
     options[:noise] = noise.to_i
   end
 
-  opts.on_tail('-s', '--scale SCALE', 'Upscaling (0 - none, 1 - 1.6x, 2 - 2x), default: 0') do |scale|
+  opts.on_tail('-s', '--scale SCALE', 'Upscaling (1 - none, 2 - 2x), default: 2') do |scale|
     options[:scale] = scale.to_i
+  end
+
+  opts.on_tail('-r', '--raw RAW', 'Return URL of the converted image (0 - no, 1 - yes), default: 0') do |raw|
+    options[:raw] = raw.to_i == 1
   end
 
   opts.on_tail('-h', '--help', 'Prints this help message') do
@@ -56,4 +60,10 @@ end
 finish_time = Time.now.to_i
 duration = finish_time - start_time
 
-puts "Upload took ~#{duration} seconds. Created file #{waifu2x}"
+print "Upload took ~#{duration} seconds. "
+
+if options[:raw]
+  puts "Converted file URL: #{waifu2x}"
+else
+  puts "Created file #{waifu2x}"
+end
