@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "waifu2x"
   spec.version       = Waifu2x::VERSION
   spec.authors       = ["Nihad Abbasov"]
-  spec.email         = ["mail@narkoz.me"]
+  spec.email         = ["nihad@42na.in"]
 
   spec.summary       = %q{Ruby wrapper and CLI for waifu2x}
   spec.description   = %q{Noise Reduction and 2x Upscaling for anime style images}
