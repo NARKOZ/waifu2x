@@ -1,4 +1,4 @@
-# Waifu2x [![Build Status](https://travis-ci.org/NARKOZ/waifu2x.svg)](https://travis-ci.org/NARKOZ/waifu2x)
+# Waifu2x
 
 Waifu2x is a ruby wrapper and CLI for
 [waifu2x](https://github.com/nagadomi/waifu2x), which provides Noise Reduction
